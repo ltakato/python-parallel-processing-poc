@@ -17,10 +17,6 @@ def sequencial_processing():
     print_in('subprocess 3', 10)
 
 
-def processing(text, seconds):
-    print_in(text, seconds)
-
-
 def parallel_processing():
     pool = mp.Pool(mp.cpu_count())
 
@@ -29,7 +25,7 @@ def parallel_processing():
         {'text': 'subprocess 2', 'seconds': 5},
         {'text': 'subprocess 3', 'seconds': 10}
     ]
-    pool.starmap(processing, [(item['text'], item['seconds']) for item in data])
+    pool.starmap(print_in, [(item['text'], item['seconds']) for item in data])
 
 
 if __name__ == '__main__':
